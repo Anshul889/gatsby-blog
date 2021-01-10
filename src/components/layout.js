@@ -26,13 +26,9 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const [theme, toggleTheme, componentMounted] = useDarkMode()
+  const [theme, toggleTheme] = useDarkMode()
 
-  const themeMode = theme === 'light' ? lightTheme : darkTheme
-
-  if (!componentMounted) {
-    return <div />
-  }
+  const themeMode = window.localStorage.getItem('theme') === 'light' ? lightTheme : darkTheme
 
   return (
     <ThemeProvider theme={themeMode}>
