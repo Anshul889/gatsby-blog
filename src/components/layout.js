@@ -28,7 +28,11 @@ const Layout = ({ children }) => {
 
   const [theme, toggleTheme] = useDarkMode()
 
-  const themeMode = window.localStorage.getItem('theme') === 'light' ? lightTheme : darkTheme
+  const isBrowser = () => typeof window !== "undefined"
+
+  const checker = isBrowser() && window.localStorage.getItem('theme') 
+
+  const themeMode = checker === 'light' ? lightTheme : darkTheme
 
   return (
     <ThemeProvider theme={themeMode}>
