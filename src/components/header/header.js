@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import home from '../../images/home.svg'
+import night from '../../images/moon-cloud-duotone.svg'
+import day from '../../images/house-day-duotone.svg'
 
 const Wrapper = styled.div`
   height: 56px;
@@ -91,19 +93,20 @@ const Header = ({ siteTitle, toggleTheme, theme }) => {
           </MItem>
           <MItem>
             <MImage src={home} />
-           <MText>Home</MText>
+            <MText>Home</MText>
           </MItem>
           <MItem>
             <MImage src={home} />
-           <MText>Home</MText>
+            <MText>Home</MText>
           </MItem>
           <MItem>
             <MImage src={home} />
-           <MText>Home</MText>
+            <MText>Home</MText>
           </MItem>
           <MItem onClick={toggleTheme}>
-            <MImage src={home} />
-           <MText>Theme</MText>
+            {theme === 'light' &&<MImage src={day} />}
+            {theme === 'dark' && <MImage src={night}/>}
+            <MText>Theme</MText>
           </MItem>
         </MItems>
       </BottomNav>

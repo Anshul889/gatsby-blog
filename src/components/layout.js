@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from 'react'
+import React, {createContext} from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useDarkMode } from './useDarkMode'
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
   let checker
 
   if (isBrowser()){
-    checker = window.localStorage.getItem('theme')
+    checker = window.localStorage.getItem('theme');
   }
 
   const themeMode = checker === 'dark' ? darkTheme : lightTheme
