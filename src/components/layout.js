@@ -8,12 +8,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import {useDarkMode} from './useDarkMode'
+import { useDarkMode } from './useDarkMode'
 import Header from './header/header'
 import './layout.css'
 import { GlobalStyles } from './globalStyles'
 import { lightTheme, darkTheme } from './Themes'
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,11 +28,15 @@ const Layout = ({ children }) => {
 
   const [theme, toggleTheme] = useDarkMode()
 
-  const isBrowser = () => typeof window !== "undefined"
+  const isBrowser = () => typeof window !== 'undefined'
 
-  const checker = isBrowser() && window.localStorage.getItem('theme') 
+  let checker
 
-  const themeMode = checker === 'light' ? lightTheme : darkTheme
+  if (isBrowser){
+    checker = window.localStorage.getItem('theme')
+  }
+
+  const themeMode = checker === 'dark' ? darkTheme : lightTheme
 
   return (
     <ThemeProvider theme={themeMode}>
@@ -51,7 +55,7 @@ const Layout = ({ children }) => {
             <a href="https://www.gatsbyjs.com">Gatsby</a>
           </footer>
         </div>
-        </>
+      </>
     </ThemeProvider>
   )
 }
