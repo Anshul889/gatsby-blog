@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import home from '../../images/home.svg'
 import night from '../../images/moon-cloud-duotone.svg'
@@ -71,6 +71,12 @@ const MText = styled.div`
 `
 
 const Header = ({ siteTitle, toggleTheme, theme }) => {
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
+
   return (
     <header>
       {/* {theme === 'light' && <div onClick={toggleTheme}>dark theme</div>}
@@ -104,8 +110,8 @@ const Header = ({ siteTitle, toggleTheme, theme }) => {
             <MText>Home</MText>
           </MItem>
           <MItem onClick={toggleTheme}>
-            {theme === 'light' &&<MImage src={day} />}
-            {theme === 'dark' && <MImage src={night}/>}
+            {loaded && theme === 'light' && <MImage src={day} />}
+            {loaded && theme === 'dark' && <MImage src={night} />}
             <MText>Theme</MText>
           </MItem>
         </MItems>
