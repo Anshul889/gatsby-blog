@@ -105,7 +105,7 @@ const Header = ({ siteTitle, toggleTheme, theme }) => {
           </MItem>
           <MItem onClick={toggleTheme}>
             {theme === 'light' &&<MImage src={day} />}
-            {theme === 'dark' && <MImage src={night}/>}
+            {typeof window !== 'undefined' &&  window.localStorage.getItem('theme') === 'dark' && <MImage src={night}/>}
             <MText>Theme</MText>
           </MItem>
         </MItems>
