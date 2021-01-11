@@ -73,10 +73,6 @@ const MText = styled.div`
 const Header = ({ siteTitle, toggleTheme, theme }) => {
   const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
-
   return (
     <header>
       {/* {theme === 'light' && <div onClick={toggleTheme}>dark theme</div>}
@@ -110,8 +106,8 @@ const Header = ({ siteTitle, toggleTheme, theme }) => {
             <MText>Home</MText>
           </MItem>
           <MItem onClick={toggleTheme}>
-            {loaded && theme === 'light' && <MImage src={day} />}
-            {loaded && theme === 'dark' && <MImage src={night} />}
+            {!loaded && theme === 'light' && <MImage src={day} />}
+            {!loaded && theme === 'dark' && <MImage src={night} />}
             <MText>Theme</MText>
           </MItem>
         </MItems>
