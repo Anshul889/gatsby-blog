@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
 
   let checker
 
-  if (isBrowser){
+  if (isBrowser()){
     checker = window.localStorage.getItem('theme')
   }
 
