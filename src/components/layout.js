@@ -38,6 +38,8 @@ const Layout = ({ children }) => {
 
   const themeMode = checker === 'dark' ? darkTheme : lightTheme
 
+  console.log(theme)
+
   return (
     <ThemeProvider theme={themeMode}>
       <>
